@@ -34,3 +34,4 @@ RUN Rscript -e \
 COPY .profile /home/rstudio/.profile
 COPY .raliases /home/rstudio/.raliases
 COPY rstudio-prefs.json /home/rstudio/.config/rstudio/rstudio-prefs.json
+RUN chown -R rstudio:rstudio /home/rstudio
