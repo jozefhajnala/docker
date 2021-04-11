@@ -13,11 +13,6 @@ RUN apt-get update -qq \
     htop \
     tree
 
-RUN wget http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh \
-  && sh update-tlmgr-latest.sh -- --upgrade \
-  && tlmgr update --self \
-  && tlmgr install collection-fontsrecommended
-
 RUN install2.r --repos http://cran.r-project.org \
   tinytest \
   lintr \
@@ -31,7 +26,9 @@ RUN Rscript -e \
 RUN Rscript -e \
   'sparklyr::spark_install("3.0")'
 
-COPY .profile /home/rstudio/.profile
-COPY .raliases /home/rstudio/.raliases
+RUN tlmgr update --self \
+  && tlmgr install collection-fontsrecommended
+
+COPY .raliases .profile /home/rstudio/
 COPY rstudio-prefs.json /home/rstudio/.config/rstudio/rstudio-prefs.json
 RUN chown -R rstudio:rstudio /home/rstudio
