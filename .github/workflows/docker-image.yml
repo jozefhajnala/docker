@@ -7,7 +7,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     defaults:
       run:
         shell: bash
@@ -16,4 +16,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag ci:citag
+    - name: Test checking of nhlapi
+      run: docker run -i ci:citag /bin/bash -c 'cat > test-devr-packagecheck.sh; sh test-devr-packagecheck.sh nhlapi' < test-devr-packagecheck.sh
+    - name: Test checking of languageserversetup
+      run: docker run -i ci:citag /bin/bash -c 'cat > test-devr-packagecheck.sh; sh test-devr-packagecheck.sh languageserversetup' < test-devr-packagecheck.sh
