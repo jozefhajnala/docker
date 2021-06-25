@@ -14,11 +14,14 @@ RUN apt-get update -qq \
     tree
 
 RUN install2.r --repos http://cran.r-project.org \
+  logger \
   tinytest \
   lintr \
   rhub \
   data.table \
-  sparklyr
+  sparklyr \
+  flexdashboard \
+  DT
 
 RUN Rscript -e \
   'remotes::install_version("roxygen2", "7.1.1", upgrade = "never")'
