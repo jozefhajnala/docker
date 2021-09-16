@@ -27,7 +27,7 @@ RUN Rscript -e \
   'remotes::install_version("roxygen2", "7.1.1", upgrade = "never")'
 
 RUN Rscript -e \
-  'sparklyr::spark_install("3.0")'
+  'sparklyr::spark_install("3.1")'
 
 RUN tlmgr update --self \
   && tlmgr install collection-fontsrecommended
