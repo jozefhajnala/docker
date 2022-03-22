@@ -11,7 +11,8 @@ RUN apt-get update -qq \
     tmux \
     nmon \
     htop \
-    tree
+    tree \
+    ncdu
 
 RUN install2.r --repos http://cran.r-project.org \
   logger \
