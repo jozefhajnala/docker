@@ -22,7 +22,8 @@ RUN install2.r --repos http://cran.r-project.org \
   data.table \
   sparklyr \
   flexdashboard \
-  DT
+  DT \
+  languageserver
 
 RUN Rscript -e \
   'remotes::install_version("roxygen2", "7.1.1", upgrade = "never")'
