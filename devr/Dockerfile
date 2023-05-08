@@ -33,7 +33,9 @@ RUN Rscript -e \
   'sparklyr::spark_install("3.3")'
 
 RUN tlmgr update --self \
-  && tlmgr install collection-fontsrecommended
+  && tlmgr install collection-fontsrecommended \
+  && tlmgr install amsmath
+
 
 COPY .raliases .profile /home/rstudio/
 COPY rstudio-prefs.json /home/rstudio/.config/rstudio/rstudio-prefs.json
